@@ -13,13 +13,11 @@ define(["require", "exports", "aurelia-framework", "jquery", "ion-rangeslider"],
         }
         AureliaIonRangesliderCustomElement.prototype.attached = function () {
             var _this = this;
-            if (this.only_on_finished) {
+            if (this.update_on_finished)
                 this.itemsToSet.onFinish = function (x) { return _this.updateValues(x); };
-            }
-            else {
+            else
                 this.itemsToSet.onChange = function (x) { return _this.updateValues(x); };
-                this.itemsToSet.onUpdate = function (x) { return _this.updateValues(x); };
-            }
+            this.itemsToSet.onUpdate = function (x) { return _this.updateValues(x); };
             $(this.sliderRef).ionRangeSlider(this.itemsToSet);
             this.slider = $(this.sliderRef).data('ionRangeSlider');
         };
@@ -48,7 +46,7 @@ define(["require", "exports", "aurelia-framework", "jquery", "ion-rangeslider"],
         };
         __decorate([
             aurelia_framework_1.bindable
-        ], AureliaIonRangesliderCustomElement.prototype, "only_on_finished", void 0);
+        ], AureliaIonRangesliderCustomElement.prototype, "update_on_finished", void 0);
         __decorate([
             aurelia_framework_1.bindable
         ], AureliaIonRangesliderCustomElement.prototype, "type", void 0);
